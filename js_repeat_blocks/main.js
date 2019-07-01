@@ -81,20 +81,18 @@ function buildGameBoard(){
 }
 
 function bubbleSort(dataArray){
-    var numCheckPlusOne = 0;
-    var counter = 0;
-    var sorter = '';
-    var numCheck = 0;
-    while (counter < dataArray.length){
-        debugger;
-        numCheckPlusOne = counter + 1;
-        numCheck = counter;
-        for ( numCheck; dataArray[numCheck] > dataArray[numCheckPlusOne]; numCheck++, numCheckPlusOne++){
-                sorter = dataArray.splice(numCheck, 1);
-                var popper = sorter.pop();
-                dataArray.splice(numCheckPlusOne,0,popper);
+    debugger;
+    var swapped = true; // defines swapped to and sets to true so the while loop will initiate
+    while (swapped){ //while loop to loop check if true or false to replace numbers
+        swapped = false; // sets swapped to false to put stop on loop
+        for (var index = 0; index<dataArray.length;index++){ //for loop to go through all numbers on array
+            if(dataArray[index] > dataArray[index + 1]){ // if statement to check if current number is greater than next number
+                var moveElement = dataArray[index]; // sets placeholder for current number amount
+                dataArray[index] = dataArray[index + 1]; //sets current number amount to next number amount
+                dataArray[index+1] = moveElement; // sets next number amoyunt previous number amount
+                swapped = true; // swaps back to true
+            }
         }
-        counter++;
     }
     return dataArray;
 }
