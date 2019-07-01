@@ -15,11 +15,14 @@ var students = {
 
 function initializeApp(){
     console.log('Initializing App...');
-
-    
-
-    
-    
+    var forwardDiv = $('#forward-loop')
+    for(var index=0; index < numbers.length;index++){
+        forwardDiv.append(numbers[index] + ' ');
+    }
+    var reverseDiv = $('#reverse-loop');
+    for (var rIndex=numbers.length-1; rIndex >= 0; rIndex--){
+        reverseDiv.append(numbers[rIndex] + ' ');
+    }
     // Keep these at the bottom of initializeApp
     displayStudentData();
     buildGameBoard();
@@ -27,23 +30,77 @@ function initializeApp(){
 }
 
 function displayStudentData(){
-    
+    var gradeSum = 0;
+    var studentAverage = 0;
+    var fixDecimal;
+    for(var index in students){
+        var count = Object.keys(students).length;
+        gradeSum += students[index].grade;
+}
+    studentAverage = gradeSum/count;
+    fixDecimal = studentAverage.toFixed(2);
+    var studentCount = $('#student-count');
+    studentCount.text(count);
+    var studentJQAverage = $('#student-average');
+    studentJQAverage.text(fixDecimal + '%');
 }
 
 function buildGameBoard(){
     var boardSize = { rows: 8, squares: 8 };
     var gameBoard = $('#game-board');
-
-    
+    var lightOrDark = 'light';
+    for(var row = 0; row < boardSize["rows"]; row++ ){
+        var newDiv = $('<div>');
+        newDiv.addClass('row')
+        $('#game-board').append(newDiv);
+        for (var col = 0; col < boardSize["squares"]; col++){
+            var squareColDiv = $('<div>');
+            squareColDiv.addClass('square');
+            $(newDiv).append(squareColDiv);
+            if (lightOrDark === 'light'){
+                if (col % 2 === 0) {
+                    squareColDiv.addClass('light');
+                } else {
+                    squareColDiv.addClass('dark');
+                }
+            } else {
+                if (col % 2 !== 0) {
+                    squareColDiv.addClass('light');
+                } else {
+                    squareColDiv.addClass('dark');
+                }
+            }
+        }
+        if ( lightOrDark === 'light'){
+            lightOrDark = 'dark';
+        } else {
+            lightOrDark = 'light';
+        }
+        $('#game-board').append(newDiv);
+    }
 }
 
 function bubbleSort(dataArray){
-    
+    var numCheckPlusOne = 0;
+    var counter = 0;
+    var sorter = '';
+    var numCheck = 0;
+    while (counter < dataArray.length){
+        debugger;
+        numCheckPlusOne = counter + 1;
+        numCheck = counter;
+        for ( numCheck; dataArray[numCheck] > dataArray[numCheckPlusOne]; numCheck++, numCheckPlusOne++){
+                sorter = dataArray.splice(numCheck, 1);
+                var popper = sorter.pop();
+                dataArray.splice(numCheckPlusOne,0,popper);
+        }
+        counter++;
+    }
+    return dataArray;
 }
 
 function populateNumbers(numArr){
     var squareArr = [];
-
     for(var i = 0; i < numArr.length; i++){
         var square = $('<div>', {
             class: 'number',
