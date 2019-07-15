@@ -26,7 +26,7 @@ class Account{
 		//if more, only withdraw the amount in the account, not more
 		//if less, withdraw the amount specified
 		//return the amount actually withdrawn
-		debugger;
+		// debugger;
 		if (amount > 0){
 			if (amount > this.storeAmount){
 				amount = this.storeAmount;

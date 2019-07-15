@@ -77,7 +77,7 @@ class Bank{
 			//return 'account does not exist'
 		//uses the Account's remove method to withdraw funds from the account
 		//returns "removed <amount withdrawn> from account <account number>. It now has <remaining amount in account>"
-		debugger;
+		// debugger;
 		if (this.bankAccounts[accountNumber]){
 			var amountRemoved = this.bankAccounts[accountNumber].remove(amount);
 			return "removed " + amountRemoved + " from account " + accountNumber + ". It now has " + this.bankAccounts[accountNumber].storeAmount;
