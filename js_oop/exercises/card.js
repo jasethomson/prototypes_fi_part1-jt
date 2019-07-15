@@ -36,7 +36,7 @@ class Deck{
 		var randomPosition = null;
 		var cardHolder = "";
 		for(var index =0; index<this.cardStorage.length; index++){
-			randomPosition = Math.floor(Math.random() * (this.cardStorage.length + 1));
+			randomPosition = Math.floor(Math.random() * (this.cardStorage.length));
 			cardHolder = this.cardStorage.pop();
 			this.cardStorage.splice(randomPosition,0,cardHolder);
 		}

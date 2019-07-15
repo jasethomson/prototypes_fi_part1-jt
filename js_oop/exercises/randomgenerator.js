@@ -8,7 +8,7 @@ class RandomGenerator{
 		//takes in the minimum and maximum values
 		//if they are not defined, it sets the minimum to 1, and the max to 10
 		//makes storage for the random number
-		if (this.min === NaN){
+		if (this.min === undefined){
 			this.min = 1;
 			this.max = 10;
 		}
