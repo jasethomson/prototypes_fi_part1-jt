@@ -34,7 +34,7 @@ class ColorSquare{
 		if it is the right constructor, set the neightbor
 	*/
 	set neighbor( neighborObject ){
-		debugger;
+		// debugger;
 		if(neighborObject && neighborObject.constructor === ColorSquare){
 			this.domNeighbor = neighborObject;
 			return true;
@@ -66,12 +66,16 @@ class ColorSquare{
 			make sure the rightNeighbor is something!  the rightmost element won't have a neighbor
 		*/
 	handleClick(){
-		if(this.availableColors[this.currentColorIndex]){
+		this.currentColorIndex++;
+		if (this.currentColorIndex <= this.availableColors.length - 1){
+			this.changeColor(this.availableColors[this.currentColorIndex]);
 			this.currentColorIndex++;
-			if(this.currentColorIndex === undefined){
-				this.currentColorIndex = 0;
-				this.availableColors[this.currentColorIndex] = changeColor();
-			}
+		} else {
+			this.currentColorIndex = 0;
+			this.changeColor(this.availableColors[this.currentColorIndex]);
+		}
+		if(this.domNeighbor){
+			this.domNeighbor.handleClick();
 		}
 	}
 	/*
